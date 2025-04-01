@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.loja_db.Model;
+package Model;
 
 /**
  *
@@ -11,10 +11,18 @@ package com.mycompany.loja_db.Model;
 public class Produtos {
     private int id;
     private String produto;
+    private int quant; 
+    private double preco; 
 
-    public Produtos(int id, String produto) {
+    public Produtos(int id, String produto, int quant, double preco) {
         this.id = id; 
         this.produto = produto; 
+        this.quant = quant; 
+        this.preco = preco; 
+    }
+
+    Produtos() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public int getId() {
@@ -31,5 +39,21 @@ public class Produtos {
 
     public void setProduto(String produto) {
         this.produto = produto;
+    }
+    
+    public int getQuant() {
+        return quant; 
+    }
+    
+    public void setQuant(int quant) {
+        this.quant = quant; 
+    }
+    
+    public double getPreco() {
+        return preco; 
+    }
+    
+    public void setPreco(double preco) {
+        this.preco = preco; 
     }
 }
