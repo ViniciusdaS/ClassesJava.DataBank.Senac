@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package com.mycompany.loja_db.Model;
 
 /**
  *
@@ -18,7 +18,7 @@ public class ProdutosDAO {
     public Produtos registrarProduto(int id, String produto, String descricao, double preco, int quant) {
         String sql = "INSERT INTO produtos (id, produto, descrição, preço, quantidade) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection connection = Conexao.conectar();
+        try (Connection connection = ConexaoLojadb.conectar();
             PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produto);
             stmt.setString(2, descricao);
@@ -34,7 +34,7 @@ public class ProdutosDAO {
      public List<Produtos> listar() {
         List<Produtos> produtos = new ArrayList<>();
         String sql = "SELECT * FROM produtos";
-        try (Connection conn = Conexao.conectar();
+        try (Connection conn = ConexaoLojadb.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 

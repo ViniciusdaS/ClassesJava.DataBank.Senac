@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package com.mycompany.loja_db.Model;
 
 /**
  *
@@ -11,6 +11,7 @@ package Model;
 
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.*;
+import com.mycompany.loja_db.Model.Usuario; 
 
 
 public class UsuarioDAO {
@@ -18,7 +19,7 @@ public class UsuarioDAO {
         String sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
         String senhaHash = BCrypt.hashpw(senha, BCrypt.gensalt());
 
-        try (Connection connection = Conexao.conectar();
+        try (Connection connection = ConexaoLojadb.conectar();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, usuario);
             stmt.setString(2, senhaHash);
@@ -32,7 +33,7 @@ public class UsuarioDAO {
     public Usuario validarLogin(String nome, String senha) {
         String sql = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
 
-        try (Connection connection = Conexao.conectar();
+        try (Connection connection = ConexaoLojadb.conectar();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             
             stmt.setString(1, nome);

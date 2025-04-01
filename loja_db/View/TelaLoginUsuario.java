@@ -121,25 +121,28 @@ public class TelaLoginUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldPasswordActionPerformed
 
     private void buttonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCadastrarActionPerformed
-        String usuario = fieldNome.getText().trim();
+        String nome = fieldNome.getText().trim();
         String senha = new String(fieldPassword.getPassword()).trim(); 
         
-        if (controller.registrarUsuario(usuario, senha)) {
-            JOptionPane.showMessageDialog(this, "Login efetuado com sucesso! ");
-            this.dispose();
+        if (controller.registrarUsuario(nome, senha)) {
+            JOptionPane.showMessageDialog(this, "Registro efetuado com sucesso");
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao efetuar o login");
+            JOptionPane.showMessageDialog(this, "Erro ao efetuar o registro");
         }
     }//GEN-LAST:event_buttonCadastrarActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        String usuario = fieldNome.getText().trim(); 
+        String nome = fieldNome.getText().trim(); 
         String senha = new String(fieldPassword.getPassword()).trim(); 
         
-        if (controller.validarLogin(usuario, senha)) {
-            JOptionPane.showMessageDialog(this, "Login efetuado com sucesso"); 
+        try {
+            if (controller.validarLogin(nome, senha)) {
+            JOptionPane.showMessageDialog(this, "Cadastro efetuado com sucesso"); 
         } else {
             JOptionPane.showMessageDialog(this, "Conta não encontrada ou senha incorreta");
+            }
+        } catch (Exception error) {
+            System.out.println("Erro ao efetuar o cadastro");
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 

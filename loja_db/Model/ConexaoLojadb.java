@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package com.mycompany.loja_db.Model;
 
 /**
  *
@@ -10,7 +10,7 @@ package Model;
  */
 import java.sql.*; 
 
-public class Conexao {
+public class ConexaoLojadb {
     private static final String URL = "jdbc:mysql://localhost:3306/lojagosling";
     private static final String USUARIO = "root";
     private static final String SENHA = "root";

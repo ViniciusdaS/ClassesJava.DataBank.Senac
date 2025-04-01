@@ -30,7 +30,7 @@ public class TelaListagem extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        ButtonEditar = new javax.swing.JButton();
         buttonVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +57,12 @@ public class TelaListagem extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
         table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jButton1.setText("Editar");
+        ButtonEditar.setText("Editar");
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarActionPerformed(evt);
+            }
+        });
 
         buttonVoltar.setText("Voltar");
         buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +82,7 @@ public class TelaListagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(211, 211, 211)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(236, 236, 236)
                         .addComponent(buttonVoltar)))
@@ -88,7 +93,7 @@ public class TelaListagem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
-                .addComponent(jButton1)
+                .addComponent(ButtonEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonVoltar)
                 .addGap(0, 71, Short.MAX_VALUE))
@@ -106,6 +111,15 @@ public class TelaListagem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao voltar");
         }
     }//GEN-LAST:event_buttonVoltarActionPerformed
+
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
+        try {
+            this.dispose();
+            new TelaEdicao().setVisible(true);
+        } catch (Exception error){
+            JOptionPane.showMessageDialog(this, "Erro ao acionar botão");
+        }
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +157,8 @@ public class TelaListagem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonEditar;
     private javax.swing.JButton buttonVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

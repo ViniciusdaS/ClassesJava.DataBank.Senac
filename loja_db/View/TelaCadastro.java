@@ -74,6 +74,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         buttonAdd.setText("Adicionar Produto");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddActionPerformed(evt);
+            }
+        });
 
         buttonVoltar.setText("Voltar");
         buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +181,11 @@ public class TelaCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao voltar");
         }
     }//GEN-LAST:event_buttonVoltarActionPerformed
+
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_buttonAddActionPerformed
 
     /**
      * @param args the command line arguments
