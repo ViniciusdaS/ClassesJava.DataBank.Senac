@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.loja_db.Controller;
+package Controller;
 
-import com.mycompany.loja_db.Model.ProdutosDAO;
+import Model.UsuarioDAO;
+import Model.Usuario; 
 
 /**
  *
@@ -13,13 +14,17 @@ import com.mycompany.loja_db.Model.ProdutosDAO;
 
 
 public class UsuarioController {
-    private ProdutosDAO usuarioDAO = new ProdutosDAO();
+    private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    public boolean registrarUsuario(String usuario, String senha) {
-        return usuarioDAO.registrarUsuario(usuario, senha);
+    public UsuarioDAO registrarUsuario(String nome, String senha) {
+        return usuarioDAO.registrarUsuario(nome, senha);
     }
 
-    public boolean validarLogin(String usuario, String senha) {
-        return usuarioDAO.validarLogin(usuario, senha);
+    public Usuario validarLogin(String nome, String senha) {
+        return usuarioDAO.validarLogin(nome, senha);
+    }
+    
+    public Usuario login(String nome, String senha) {
+        return usuarioDAO.validarLogin(nome, senha); 
     }
 }
