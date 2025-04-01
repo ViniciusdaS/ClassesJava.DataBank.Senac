@@ -108,7 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         try {
             this.dispose();
-            new TelaCadastro().setVisible(true);
+            new TelaCadastroProdutos().setVisible(true);
         } catch(Exception error) {
             JOptionPane.showMessageDialog(this, "Erro");
         }
