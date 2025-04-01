@@ -38,4 +38,19 @@ public class Conexao {
             throw new RuntimeException("Erro ao criar a tabela", error);
         }
     }
+    
+    private static void criarTabelaProdutos() {
+        String sql = "CREATE TABLE IF NOT EXISTS produtos (" +
+                     "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                     "produto VARCHAR(100) NOT NULL ," +
+                     "descrição VARCHAR(500) NOT NULL, " +
+                     "preço DECIMAL(10,2) NOT NULL, " +
+                     "quantidade INT NOT NULL)"; 
+                try (Statement stmt = connection.createStatement()) {
+                stmt.execute(sql);
+                System.out.println("Criada tabela produtos");
+        } catch (SQLException error) {
+            throw new RuntimeException("Erro ao criar a tabela produtos", error);
+        }
+    }
 }
