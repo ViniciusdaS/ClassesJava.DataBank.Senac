@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.loja_db.Model;
+package Model;
 
 /**
  *
@@ -10,12 +10,16 @@ package com.mycompany.loja_db.Model;
  */
 public class Usuario {
     private int id;
-    private String usuario;
+    private String nome;
     private String senha;
 
-    public Usuario(String usuario, String senha) {
-        this.usuario = usuario;
+    public Usuario(String nome, String senha) {
+        this.nome = nome;
         this.senha = senha;
+    }
+
+    Usuario() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     public int getId() {
@@ -26,12 +30,12 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSenha() {
@@ -41,5 +45,6 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
     
 }
