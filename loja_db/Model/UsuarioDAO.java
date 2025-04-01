@@ -15,7 +15,8 @@ import com.mycompany.loja_db.Model.Usuario;
 
 
 public class UsuarioDAO {
-    public UsuarioDAO registrarUsuario(String usuario, String senha) {
+    public boolean registrarUsuario(String usuario, String senha) {
+        
         String sql = "INSERT INTO usuarios (usuario, senha) VALUES (?, ?)";
         String senhaHash = BCrypt.hashpw(senha, BCrypt.gensalt());
 
@@ -24,31 +25,28 @@ public class UsuarioDAO {
             stmt.setString(1, usuario);
             stmt.setString(2, senhaHash);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
-    public Usuario validarLogin(String nome, String senha) {
-        String sql = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
+    public boolean validarLogin(String nome, String senha) {
+        String sql = "SELECT senha FROM usuarios WHERE nome = ?";
 
         try (Connection connection = ConexaoLojadb.conectar();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             
             stmt.setString(1, nome);
-            stmt.setString(2, senha);
             ResultSet rs = stmt.executeQuery(); 
             
             if (rs.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setNome("nome");
-                usuario.setSenha("senha");
-                return usuario;
+                return BCrypt.checkpw(senha, rs.getString("senha"));
             }
         } catch (SQLException error){
             error.printStackTrace();
         }
-        return null; 
+        return false;
     }
 }

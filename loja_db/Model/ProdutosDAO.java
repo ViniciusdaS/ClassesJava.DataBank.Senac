@@ -8,35 +8,32 @@ package com.mycompany.loja_db.Model;
  *
  * @author VINICIUSDASILVATEIXE
  */
-
-
 import java.sql.*;
-import java.util.List; 
-import java.util.ArrayList; 
+import java.util.List;
+import java.util.ArrayList;
 
 public class ProdutosDAO {
-    public Produtos registrarProduto(int id, String produto, String descricao, double preco, int quant) {
-        String sql = "INSERT INTO produtos (id, produto, descrição, preço, quantidade) VALUES (?, ?, ?, ?, ?)";
 
-        try (Connection connection = ConexaoLojadb.conectar();
-            PreparedStatement stmt = connection.prepareStatement(sql)) {
+    public boolean registrarProduto(String produto, String descricao, double preco, int quant) {
+        String sql = "INSERT INTO produtos (produto, descrição, preço, quantidade) VALUES (?, ?, ?, ?)";
+
+        try (Connection connection = ConexaoLojadb.conectar(); PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, produto);
             stmt.setString(2, descricao);
             stmt.setDouble(3, preco);
             stmt.setInt(4, quant);
             stmt.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
-    
-     public List<Produtos> listar() {
-        List<Produtos> produtos = new ArrayList<>();
+
+    public List<Produtos> listar() {
+        ArrayList<Produtos> produtos = new ArrayList<>();
         String sql = "SELECT * FROM produtos";
-        try (Connection conn = ConexaoLojadb.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = ConexaoLojadb.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Produtos produto = new Produtos();
@@ -46,12 +43,9 @@ public class ProdutosDAO {
                 produto.setQuant(rs.getInt("quantidade"));
                 produtos.add(produto);
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return produtos;
     }
 }
-    
-   

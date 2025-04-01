@@ -10,22 +10,19 @@ package com.mycompany.loja_db.Controller;
  */
 
 
-import com.mycompany.loja_db.Model.ProdutosDAO; 
 import com.mycompany.loja_db.Model.Produtos;
+import com.mycompany.loja_db.Model.ProdutosDAO; 
+import java.util.List;
 
 
 public class ProdutosController {
-    private ProdutosDAO usuarioDAO = new ProdutosDAO();
+    private ProdutosDAO produtosDAO = new ProdutosDAO();
 
-    public ProdutosDAO registrarProdutos(String produto, String descricao, int quant, double preco) {
-        return ProdutosDAO.registrarProduto(produto, descricao, quant, preco);
-    }
-
-    public Usuario validarLogin(String nome, String senha) {
-        return usuarioDAO.validarLogin(nome, senha);
+    public boolean registrarProd(String produto, String descricao, int quant, double preco) {
+        return produtosDAO.registrarProduto(produto, descricao, preco, quant);
     }
     
-    public Usuario login(String nome, String senha) {
-        return usuarioDAO.validarLogin(nome, senha); 
+    public List<Produtos> listarProdutos() {
+        return produtosDAO.listar();
     }
 }

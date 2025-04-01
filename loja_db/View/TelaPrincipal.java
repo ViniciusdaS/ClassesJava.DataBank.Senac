@@ -129,20 +129,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         try {
             this.dispose();
-            new TelaEdicao().setVisible(true);
+            new TelaListagem().setVisible(true);
         } catch(Exception error){
             JOptionPane.showMessageDialog(this, "Erro");
         }
     }//GEN-LAST:event_buttonAtualizarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        
-        try {
-            this.dispose();
-            new TelaExclusao().setVisible(true);
-        } catch(Exception error) {
-            JOptionPane.showMessageDialog(this, "Erro");
-        }
+
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     /**

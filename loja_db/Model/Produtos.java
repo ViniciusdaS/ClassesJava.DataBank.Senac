@@ -14,15 +14,14 @@ public class Produtos {
     private int quant; 
     private double preco; 
 
+    public Produtos() {
+    }
+
     public Produtos(int id, String produto, int quant, double preco) {
         this.id = id; 
         this.produto = produto; 
         this.quant = quant; 
         this.preco = preco; 
-    }
-
-    Produtos() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public int getId() {

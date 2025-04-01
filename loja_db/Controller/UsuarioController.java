@@ -16,15 +16,11 @@ import com.mycompany.loja_db.Model.Usuario;
 public class UsuarioController {
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    public UsuarioDAO registrarUsuario(String nome, String senha) {
+    public boolean registrarUsuario(String nome, String senha) {
         return usuarioDAO.registrarUsuario(nome, senha);
     }
 
-    public Usuario validarLogin(String nome, String senha) {
+    public boolean validarLogin(String nome, String senha) {
         return usuarioDAO.validarLogin(nome, senha);
-    }
-    
-    public Usuario login(String nome, String senha) {
-        return usuarioDAO.validarLogin(nome, senha); 
     }
 }
